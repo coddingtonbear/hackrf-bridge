@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Oct 18 22:58:05 2015
+# Generated: Tue Oct 20 22:06:13 2015
 ##################################################
 
 from gnuradio import analog
@@ -26,6 +26,7 @@ class top_block(gr.top_block):
         # Variables
         ##################################################
         self.audio_rate = audio_rate = int(48e3)
+        self.soundcard_is_inverted = soundcard_is_inverted = True
         self.rtl_rate = rtl_rate = int(2.4e6)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
         self.out_frequency_offset = out_frequency_offset = -35e3
@@ -81,8 +82,8 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
-        self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff((-1, ))
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain, ))
+        self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff((-1 if soundcard_is_inverted else 1, ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if soundcard_is_inverted else in_final_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "Soundflower (64ch)", True)
         self.audio_sink_1 = audio.sink(audio_rate, "Soundflower (2ch)", False)
         self.analog_pwr_squelch_xx_0_0 = analog.pwr_squelch_cc(-60, 1, 1, False)
@@ -129,6 +130,14 @@ class top_block(gr.top_block):
         self.set_out_intermediary_rate(self.audio_rate*4)
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
         self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
+
+    def get_soundcard_is_inverted(self):
+        return self.soundcard_is_inverted
+
+    def set_soundcard_is_inverted(self, soundcard_is_inverted):
+        self.soundcard_is_inverted = soundcard_is_inverted
+        self.blocks_multiply_const_vxx_2.set_k((-1 if self.soundcard_is_inverted else 1, ))
+        self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain if self.soundcard_is_inverted else self.in_final_gain, ))
 
     def get_rtl_rate(self):
         return self.rtl_rate
@@ -177,7 +186,7 @@ class top_block(gr.top_block):
 
     def set_in_final_gain(self, in_final_gain):
         self.in_final_gain = in_final_gain
-        self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain, ))
+        self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain if self.soundcard_is_inverted else self.in_final_gain, ))
 
     def get_hackrf_rate(self):
         return self.hackrf_rate
@@ -200,4 +209,9 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
     tb = top_block()
     tb.start()
+    try:
+        raw_input('Press Enter to quit: ')
+    except EOFError:
+        pass
+    tb.stop()
     tb.wait()
