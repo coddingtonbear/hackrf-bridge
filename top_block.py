@@ -2,18 +2,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Oct 25 15:59:13 2015
+# Generated: Sun Oct 25 16:14:51 2015
 ##################################################
-
-if __name__ == '__main__':
-    import ctypes
-    import sys
-    if sys.platform.startswith('linux'):
-        try:
-            x11 = ctypes.cdll.LoadLibrary('libX11.so')
-            x11.XInitThreads()
-        except:
-            print "Warning: failed to XInitThreads()"
 
 from gnuradio import analog
 from gnuradio import audio
@@ -21,21 +11,16 @@ from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import filter
 from gnuradio import gr
-from gnuradio import wxgui
 from gnuradio.eng_option import eng_option
-from gnuradio.fft import window
 from gnuradio.filter import firdes
-from gnuradio.wxgui import fftsink2
-from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
 import osmosdr
 import time
-import wx
 
-class top_block(grc_wxgui.top_block_gui):
+class top_block(gr.top_block):
 
     def __init__(self):
-        grc_wxgui.top_block_gui.__init__(self, title="Top Block")
+        gr.top_block.__init__(self, "Top Block")
 
         ##################################################
         # Variables
@@ -55,38 +40,6 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Blocks
         ##################################################
-        self.wxgui_fftsink2_1 = fftsink2.fft_sink_f(
-        	self.GetWin(),
-        	baseband_freq=0,
-        	y_per_div=10,
-        	y_divs=10,
-        	ref_level=0,
-        	ref_scale=2.0,
-        	sample_rate=audio_rate,
-        	fft_size=1024,
-        	fft_rate=15,
-        	average=False,
-        	avg_alpha=None,
-        	title="FFT Plot",
-        	peak_hold=False,
-        )
-        self.Add(self.wxgui_fftsink2_1.win)
-        self.wxgui_fftsink2_0 = fftsink2.fft_sink_f(
-        	self.GetWin(),
-        	baseband_freq=0,
-        	y_per_div=10,
-        	y_divs=10,
-        	ref_level=0,
-        	ref_scale=2.0,
-        	sample_rate=audio_rate,
-        	fft_size=1024,
-        	fft_rate=15,
-        	average=False,
-        	avg_alpha=None,
-        	title="FFT Plot",
-        	peak_hold=False,
-        )
-        self.Add(self.wxgui_fftsink2_0.win)
         self.rtlsdr_source_0 = osmosdr.source( args="numchan=" + str(1) + " " + "" )
         self.rtlsdr_source_0.set_sample_rate(rtl_rate)
         self.rtlsdr_source_0.set_center_freq(in_frequency+in_frequency_offset, 0)
@@ -129,6 +82,8 @@ class top_block(grc_wxgui.top_block_gui):
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
+        self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, True)
+        self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, True)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff((-1 if soundcard_is_inverted else 1, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if soundcard_is_inverted else in_final_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
@@ -155,7 +110,7 @@ class top_block(grc_wxgui.top_block_gui):
         # Connections
         ##################################################
         self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
-        self.connect((self.analog_fm_demod_cf_0, 0), (self.wxgui_fftsink2_1, 0))    
+        self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_udp_sink_1, 0))    
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
         self.connect((self.analog_pwr_squelch_xx_0_0, 0), (self.analog_fm_demod_cf_0, 0))    
@@ -164,7 +119,7 @@ class top_block(grc_wxgui.top_block_gui):
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
         self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))    
-        self.connect((self.low_pass_filter_0, 0), (self.wxgui_fftsink2_0, 0))    
+        self.connect((self.low_pass_filter_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.low_pass_filter_1, 0), (self.analog_pwr_squelch_xx_0_0, 0))    
         self.connect((self.rational_resampler_xxx_1, 0), (self.low_pass_filter_1, 0))    
         self.connect((self.rational_resampler_xxx_3, 0), (self.osmosdr_sink_0, 0))    
@@ -179,8 +134,6 @@ class top_block(grc_wxgui.top_block_gui):
         self.set_out_intermediary_rate(self.audio_rate*4)
         self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
-        self.wxgui_fftsink2_0.set_sample_rate(self.audio_rate)
-        self.wxgui_fftsink2_1.set_sample_rate(self.audio_rate)
 
     def get_soundcard_is_inverted(self):
         return self.soundcard_is_inverted
@@ -259,5 +212,10 @@ if __name__ == '__main__':
     parser = OptionParser(option_class=eng_option, usage="%prog: [options]")
     (options, args) = parser.parse_args()
     tb = top_block()
-    tb.Start(True)
-    tb.Wait()
+    tb.start()
+    try:
+        raw_input('Press Enter to quit: ')
+    except EOFError:
+        pass
+    tb.stop()
+    tb.wait()
