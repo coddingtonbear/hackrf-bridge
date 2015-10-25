@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Oct 25 16:45:30 2015
+# Generated: Sun Oct 25 16:46:44 2015
 ##################################################
 
 from gnuradio import analog
@@ -57,6 +57,7 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, True)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
+        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
         	quad_rate=int(out_intermediary_rate),
@@ -68,7 +69,8 @@ class top_block(gr.top_block):
         # Connections
         ##################################################
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
-        self.connect((self.audio_source_0, 0), (self.analog_nbfm_tx_0, 0))    
+        self.connect((self.analog_pwr_squelch_xx_0, 0), (self.analog_nbfm_tx_0, 0))    
+        self.connect((self.audio_source_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
         self.connect((self.rational_resampler_xxx_3, 0), (self.osmosdr_sink_0, 0))    
@@ -98,8 +100,8 @@ class top_block(gr.top_block):
 
     def set_out_frequency_offset(self, out_frequency_offset):
         self.out_frequency_offset = out_frequency_offset
-        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
         self.freq_xlating_fft_filter_ccc_0.set_center_freq(0-self.out_frequency_offset)
+        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
 
     def get_out_frequency(self):
         return self.out_frequency
