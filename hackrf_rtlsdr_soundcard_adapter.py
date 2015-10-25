@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Oct 20 22:06:13 2015
+# Generated: Sat Oct 24 20:48:14 2015
 ##################################################
 
 from gnuradio import analog
@@ -84,8 +84,8 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff((-1 if soundcard_is_inverted else 1, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if soundcard_is_inverted else in_final_gain, ))
-        self.audio_source_0 = audio.source(audio_rate, "Soundflower (64ch)", True)
-        self.audio_sink_1 = audio.sink(audio_rate, "Soundflower (2ch)", False)
+        self.audio_source_0 = audio.source(audio_rate, "hw:10,0", True)
+        self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
         self.analog_pwr_squelch_xx_0_0 = analog.pwr_squelch_cc(-60, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
