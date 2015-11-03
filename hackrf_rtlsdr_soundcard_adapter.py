@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 07:12:11 2015
+# Generated: Tue Nov  3 07:14:03 2015
 ##################################################
 
 from gnuradio import analog
@@ -29,7 +29,7 @@ class top_block(gr.top_block):
         self.soundcard_is_inverted = soundcard_is_inverted = True
         self.rtl_rate = rtl_rate = int(2.4e6)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
-        self.out_gain = out_gain = 0.5
+        self.out_gain = out_gain = 0.66
         self.out_frequency_offset = out_frequency_offset = -35e3
         self.out_frequency = out_frequency = 145.521e6
         self.in_frequency_offset = in_frequency_offset = 0
