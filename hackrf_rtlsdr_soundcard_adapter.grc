@@ -85,7 +85,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>.2</value>
+      <value>1</value>
     </param>
     <param>
       <key>alias</key>
@@ -3571,61 +3571,6 @@
     </param>
   </block>
   <block>
-    <key>analog_nbfm_tx</key>
-    <param>
-      <key>id</key>
-      <value>analog_nbfm_tx_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>audio_rate</key>
-      <value>int(audio_rate)</value>
-    </param>
-    <param>
-      <key>quad_rate</key>
-      <value>int(out_intermediary_rate)</value>
-    </param>
-    <param>
-      <key>tau</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>max_dev</key>
-      <value>6.25e3*1.25</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(568, 128)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_multiply_const_vxx</key>
     <param>
       <key>id</key>
@@ -3780,6 +3725,61 @@
     <param>
       <key>_coordinate</key>
       <value>(464, 640)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>analog_nbfm_tx</key>
+    <param>
+      <key>id</key>
+      <value>analog_nbfm_tx_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>audio_rate</key>
+      <value>int(audio_rate)</value>
+    </param>
+    <param>
+      <key>quad_rate</key>
+      <value>int(out_intermediary_rate)</value>
+    </param>
+    <param>
+      <key>tau</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>max_dev</key>
+      <value>6.25e3*1.25</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(568, 128)</value>
     </param>
     <param>
       <key>_rotation</key>
