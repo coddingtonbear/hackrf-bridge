@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 07:27:10 2015
+# Generated: Tue Nov  3 07:29:27 2015
 ##################################################
 
 from gnuradio import analog
@@ -28,7 +28,7 @@ class top_block(gr.top_block):
         self.audio_rate = audio_rate = int(48e3)
         self.rtl_rate = rtl_rate = int(2.4e6)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
-        self.out_gain = out_gain = .3
+        self.out_gain = out_gain = .2
         self.out_frequency_offset = out_frequency_offset = -35e3
         self.out_frequency = out_frequency = 145.521e6
         self.out_audio_inverted = out_audio_inverted = False
@@ -84,8 +84,8 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
-        self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, True)
-        self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_gr_complex*1, "10.224.224.5", 10224, 1472, True)
+        self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
+        self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_gr_complex*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
