@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Mon Nov  2 22:42:35 2015
+# Generated: Mon Nov  2 22:44:22 2015
 ##################################################
 
 from gnuradio import analog
@@ -26,7 +26,7 @@ class top_block(gr.top_block):
         # Variables
         ##################################################
         self.audio_rate = audio_rate = int(48e3)
-        self.soundcard_is_inverted = soundcard_is_inverted = True
+        self.soundcard_is_inverted = soundcard_is_inverted = False
         self.rtl_rate = rtl_rate = int(2.4e6)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
         self.out_frequency_offset = out_frequency_offset = -35e3
@@ -88,7 +88,6 @@ class top_block(gr.top_block):
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if soundcard_is_inverted else in_final_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
-        self.analog_pwr_squelch_xx_0_0 = analog.pwr_squelch_cc(-60, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
@@ -113,14 +112,13 @@ class top_block(gr.top_block):
         self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_udp_sink_1, 0))    
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
-        self.connect((self.analog_pwr_squelch_xx_0_0, 0), (self.analog_fm_demod_cf_0, 0))    
         self.connect((self.audio_source_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
         self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))    
-        self.connect((self.low_pass_filter_1, 0), (self.analog_pwr_squelch_xx_0_0, 0))    
+        self.connect((self.low_pass_filter_1, 0), (self.analog_fm_demod_cf_0, 0))    
         self.connect((self.rational_resampler_xxx_1, 0), (self.low_pass_filter_1, 0))    
         self.connect((self.rational_resampler_xxx_3, 0), (self.osmosdr_sink_0, 0))    
         self.connect((self.rtlsdr_source_0, 0), (self.rational_resampler_xxx_1, 0))    
@@ -140,8 +138,8 @@ class top_block(gr.top_block):
 
     def set_soundcard_is_inverted(self, soundcard_is_inverted):
         self.soundcard_is_inverted = soundcard_is_inverted
-        self.blocks_multiply_const_vxx_2.set_k((-1 if self.soundcard_is_inverted else 1, ))
         self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain if self.soundcard_is_inverted else self.in_final_gain, ))
+        self.blocks_multiply_const_vxx_2.set_k((-1 if self.soundcard_is_inverted else 1, ))
 
     def get_rtl_rate(self):
         return self.rtl_rate
@@ -161,8 +159,8 @@ class top_block(gr.top_block):
 
     def set_out_frequency_offset(self, out_frequency_offset):
         self.out_frequency_offset = out_frequency_offset
-        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
         self.freq_xlating_fft_filter_ccc_0.set_center_freq(0-self.out_frequency_offset)
+        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
 
     def get_out_frequency(self):
         return self.out_frequency
