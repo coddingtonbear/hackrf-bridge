@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 07:09:34 2015
+# Generated: Tue Nov  3 07:12:11 2015
 ##################################################
 
 from gnuradio import analog
@@ -29,6 +29,7 @@ class top_block(gr.top_block):
         self.soundcard_is_inverted = soundcard_is_inverted = True
         self.rtl_rate = rtl_rate = int(2.4e6)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
+        self.out_gain = out_gain = 0.5
         self.out_frequency_offset = out_frequency_offset = -35e3
         self.out_frequency = out_frequency = 145.521e6
         self.in_frequency_offset = in_frequency_offset = 0
@@ -84,7 +85,7 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, True)
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_gr_complex*1, "10.224.224.5", 10224, 1472, True)
-        self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff((-1 if soundcard_is_inverted else 1, ))
+        self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if soundcard_is_inverted else 1)*out_gain, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if soundcard_is_inverted else in_final_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
@@ -138,8 +139,8 @@ class top_block(gr.top_block):
 
     def set_soundcard_is_inverted(self, soundcard_is_inverted):
         self.soundcard_is_inverted = soundcard_is_inverted
-        self.blocks_multiply_const_vxx_2.set_k((-1 if self.soundcard_is_inverted else 1, ))
         self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain if self.soundcard_is_inverted else self.in_final_gain, ))
+        self.blocks_multiply_const_vxx_2.set_k(((-1 if self.soundcard_is_inverted else 1)*self.out_gain, ))
 
     def get_rtl_rate(self):
         return self.rtl_rate
@@ -153,6 +154,13 @@ class top_block(gr.top_block):
 
     def set_out_intermediary_rate(self, out_intermediary_rate):
         self.out_intermediary_rate = out_intermediary_rate
+
+    def get_out_gain(self):
+        return self.out_gain
+
+    def set_out_gain(self, out_gain):
+        self.out_gain = out_gain
+        self.blocks_multiply_const_vxx_2.set_k(((-1 if self.soundcard_is_inverted else 1)*self.out_gain, ))
 
     def get_out_frequency_offset(self):
         return self.out_frequency_offset
