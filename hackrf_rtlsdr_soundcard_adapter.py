@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 07:53:58 2015
+# Generated: Tue Nov  3 07:55:06 2015
 ##################################################
 
 from gnuradio import analog
@@ -65,7 +65,7 @@ class top_block(gr.top_block):
         	audio_rate=int(audio_rate),
         	quad_rate=int(out_intermediary_rate),
         	tau=0,
-        	max_dev=6.25e3*2,
+        	max_dev=dstar_bandwidth,
         )
 
         ##################################################
