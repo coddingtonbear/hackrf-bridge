@@ -85,7 +85,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>.7</value>
+      <value>1.25</value>
     </param>
     <param>
       <key>alias</key>
@@ -98,37 +98,6 @@
     <param>
       <key>_coordinate</key>
       <value>(360, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>out_audio_inverted</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(424, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -160,6 +129,37 @@
     <param>
       <key>_coordinate</key>
       <value>(256, 67)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>out_audio_inverted</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(424, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3853,12 +3853,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_2</source_block_id>
-    <sink_block_id>low_pass_filter_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>rational_resampler_xxx_3</source_block_id>
     <sink_block_id>osmosdr_sink_0</sink_block_id>
     <source_key>0</source_key>
@@ -3867,6 +3861,12 @@
   <connection>
     <source_block_id>freq_xlating_fft_filter_ccc_0</source_block_id>
     <sink_block_id>rational_resampler_xxx_3</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_2</source_block_id>
+    <sink_block_id>low_pass_filter_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
