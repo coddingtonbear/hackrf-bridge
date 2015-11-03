@@ -85,7 +85,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>.66</value>
+      <value>.75</value>
     </param>
     <param>
       <key>alias</key>
@@ -98,37 +98,6 @@
     <param>
       <key>_coordinate</key>
       <value>(360, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>out_audio_inverted</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(424, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -160,6 +129,37 @@
     <param>
       <key>_coordinate</key>
       <value>(256, 67)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>out_audio_inverted</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(424, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
