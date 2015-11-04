@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 20:40:27 2015
+# Generated: Tue Nov  3 20:41:36 2015
 ##################################################
 
 from gnuradio import analog
@@ -75,7 +75,7 @@ class top_block(gr.top_block):
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
         self.connect((self.audio_source_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
-        self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
+        self.connect((self.blocks_multiply_const_vxx_2, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
         self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))    
