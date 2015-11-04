@@ -85,7 +85,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>.01</value>
+      <value>.05</value>
     </param>
     <param>
       <key>alias</key>
@@ -98,6 +98,37 @@
     <param>
       <key>_coordinate</key>
       <value>(376, 67)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>out_intermediary_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>audio_rate*4</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(272, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -160,37 +191,6 @@
     <param>
       <key>_coordinate</key>
       <value>(168, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>out_intermediary_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>audio_rate*4</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(272, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3847,8 +3847,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_2</source_block_id>
-    <sink_block_id>blocks_udp_sink_0</sink_block_id>
+    <source_block_id>analog_nbfm_tx_0</source_block_id>
+    <sink_block_id>freq_xlating_fft_filter_ccc_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>low_pass_filter_0</source_block_id>
+    <sink_block_id>analog_nbfm_tx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -3859,14 +3865,8 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>analog_nbfm_tx_0</source_block_id>
-    <sink_block_id>freq_xlating_fft_filter_ccc_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>low_pass_filter_0</source_block_id>
-    <sink_block_id>analog_nbfm_tx_0</sink_block_id>
+    <source_block_id>blocks_multiply_const_vxx_2</source_block_id>
+    <sink_block_id>blocks_udp_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
