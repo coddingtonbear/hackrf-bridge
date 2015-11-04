@@ -77,6 +77,37 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>int(192e3)</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(144, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>out_gain</value>
     </param>
     <param>
@@ -170,162 +201,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>rtl_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>int(2.4e6)</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(8, 339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>in_frequency_offset</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(144, 339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>in_frequency</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>145.551e6</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(64, 339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>in_final_gain</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>4</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(240, 339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>in_audio_inverted</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(312, 339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>out_frequency_offset</value>
+      <value>hackrf_rate</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -333,7 +209,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-35e3</value>
+      <value>2e6</value>
     </param>
     <param>
       <key>alias</key>
@@ -345,69 +221,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(152, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>dstar_bandwidth</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>6.5e3</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(216, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>audio_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>int(48e3)</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(144, 11)</value>
+      <value>(8, 67)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -449,7 +263,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>hackrf_rate</value>
+      <value>dstar_bandwidth</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -457,7 +271,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2e6</value>
+      <value>6.5e3</value>
     </param>
     <param>
       <key>alias</key>
@@ -469,7 +283,193 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 67)</value>
+      <value>(216, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>out_frequency_offset</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>-35e3</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(152, 67)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>in_audio_inverted</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(312, 339)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>in_final_gain</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(240, 339)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>in_frequency</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>145.551e6</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(64, 339)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>in_frequency_offset</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(144, 339)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>rtl_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>int(2.4e6)</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 339)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3496,30 +3496,30 @@
     </param>
   </block>
   <block>
-    <key>audio_source</key>
+    <key>analog_nbfm_tx</key>
     <param>
       <key>id</key>
-      <value>audio_source_0</value>
+      <value>analog_nbfm_tx_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>samp_rate</key>
-      <value>audio_rate</value>
+      <key>audio_rate</key>
+      <value>int(audio_rate)</value>
     </param>
     <param>
-      <key>device_name</key>
-      <value>hw:10,1</value>
+      <key>quad_rate</key>
+      <value>int(out_intermediary_rate)</value>
     </param>
     <param>
-      <key>ok_to_block</key>
-      <value>True</value>
+      <key>tau</key>
+      <value>0</value>
     </param>
     <param>
-      <key>num_outputs</key>
-      <value>1</value>
+      <key>max_dev</key>
+      <value>dstar_bandwidth</value>
     </param>
     <param>
       <key>alias</key>
@@ -3543,7 +3543,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 139)</value>
+      <value>(568, 128)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3633,7 +3633,7 @@
     </param>
     <param>
       <key>samp_rate</key>
-      <value>audio_rate</value>
+      <value>192e3</value>
     </param>
     <param>
       <key>cutoff_freq</key>
@@ -3674,61 +3674,6 @@
     <param>
       <key>_coordinate</key>
       <value>(424, 112)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>analog_nbfm_tx</key>
-    <param>
-      <key>id</key>
-      <value>analog_nbfm_tx_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>audio_rate</key>
-      <value>int(audio_rate)</value>
-    </param>
-    <param>
-      <key>quad_rate</key>
-      <value>int(out_intermediary_rate)</value>
-    </param>
-    <param>
-      <key>tau</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>max_dev</key>
-      <value>dstar_bandwidth</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(568, 128)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3780,6 +3725,61 @@
     <param>
       <key>_coordinate</key>
       <value>(304, 141)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>audio_source</key>
+    <param>
+      <key>id</key>
+      <value>audio_source_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>device_name</key>
+      <value>hw:10,1</value>
+    </param>
+    <param>
+      <key>ok_to_block</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>num_outputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 139)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3847,8 +3847,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>audio_source_0</source_block_id>
-    <sink_block_id>blocks_udp_sink_0</sink_block_id>
+    <source_block_id>low_pass_filter_0</source_block_id>
+    <sink_block_id>analog_nbfm_tx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>analog_nbfm_tx_0</source_block_id>
+    <sink_block_id>freq_xlating_fft_filter_ccc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -3859,14 +3865,8 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>low_pass_filter_0</source_block_id>
-    <sink_block_id>analog_nbfm_tx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>analog_nbfm_tx_0</source_block_id>
-    <sink_block_id>freq_xlating_fft_filter_ccc_0</sink_block_id>
+    <source_block_id>audio_source_0</source_block_id>
+    <sink_block_id>blocks_udp_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

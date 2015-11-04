@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 19:17:02 2015
+# Generated: Tue Nov  3 19:23:43 2015
 ##################################################
 
 from gnuradio import analog
@@ -25,7 +25,7 @@ class top_block(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.audio_rate = audio_rate = int(48e3)
+        self.audio_rate = audio_rate = int(192e3)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
         self.out_gain = out_gain = .66
         self.out_frequency_offset = out_frequency_offset = -35e3
@@ -54,7 +54,7 @@ class top_block(gr.top_block):
         self.osmosdr_sink_0.set_bandwidth(100e3, 0)
           
         self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
-        	1, audio_rate, dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
+        	1, 192e3, dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
@@ -88,7 +88,6 @@ class top_block(gr.top_block):
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
         self.set_out_intermediary_rate(self.audio_rate*4)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
 
     def get_out_intermediary_rate(self):
         return self.out_intermediary_rate
@@ -137,7 +136,7 @@ class top_block(gr.top_block):
 
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, 192e3, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
 
 
 if __name__ == '__main__':
