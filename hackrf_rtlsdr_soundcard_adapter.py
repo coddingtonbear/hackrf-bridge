@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Nov  3 20:38:50 2015
+# Generated: Tue Nov  3 20:40:27 2015
 ##################################################
 
 from gnuradio import analog
@@ -27,7 +27,7 @@ class top_block(gr.top_block):
         ##################################################
         self.audio_rate = audio_rate = int(48e3)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
-        self.out_gain = out_gain = .45
+        self.out_gain = out_gain = .1
         self.out_frequency_offset = out_frequency_offset = -35e3
         self.out_frequency = out_frequency = 145.521e6
         self.out_audio_inverted = out_audio_inverted = False
@@ -61,7 +61,7 @@ class top_block(gr.top_block):
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:2,0", True)
-        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
+        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-40, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
         	quad_rate=int(out_intermediary_rate),
