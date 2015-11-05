@@ -77,6 +77,37 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>int(48e3)</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(144, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>out_intermediary_rate</value>
     </param>
     <param>
@@ -408,37 +439,6 @@
     <param>
       <key>_coordinate</key>
       <value>(168, 427)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>audio_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>int(48e3)</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(144, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3752,6 +3752,37 @@
     </param>
   </block>
   <block>
+    <key>note</key>
+    <param>
+      <key>id</key>
+      <value>note_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>note</key>
+      <value>TO D-Star Repeater</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(584, 384)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>audio_sink</key>
     <param>
       <key>id</key>
@@ -3792,37 +3823,6 @@
     <param>
       <key>_coordinate</key>
       <value>(584, 339)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>note</key>
-    <param>
-      <key>id</key>
-      <value>note_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>note</key>
-      <value>TO D-Star Repeater</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(584, 384)</value>
     </param>
     <param>
       <key>_rotation</key>
