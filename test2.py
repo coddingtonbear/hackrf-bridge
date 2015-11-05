@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 08:02:25 2015
+# Generated: Thu Nov  5 08:03:01 2015
 ##################################################
 
 from gnuradio import audio
@@ -22,7 +22,7 @@ class top_block(gr.top_block):
         # Blocks
         ##################################################
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_float*1)
-        self.audio_sink_0 = audio.sink(int(48e3), "hw:11,0", True)
+        self.audio_sink_0 = audio.sink(int(48e3), "hw:0,0", True)
 
         ##################################################
         # Connections
