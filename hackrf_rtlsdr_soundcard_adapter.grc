@@ -2226,73 +2226,6 @@
     </param>
   </block>
   <block>
-    <key>analog_fm_demod_cf</key>
-    <param>
-      <key>id</key>
-      <value>analog_fm_demod_cf_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>chan_rate</key>
-      <value>audio_rate*3</value>
-    </param>
-    <param>
-      <key>audio_decim</key>
-      <value>3</value>
-    </param>
-    <param>
-      <key>deviation</key>
-      <value>dstar_bandwidth*2</value>
-    </param>
-    <param>
-      <key>audio_pass</key>
-      <value>dstar_bandwidth+1e3</value>
-    </param>
-    <param>
-      <key>audio_stop</key>
-      <value>dstar_bandwidth+2e3</value>
-    </param>
-    <param>
-      <key>gain</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>tau</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(152, 312)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>rtlsdr_source</key>
     <param>
       <key>id</key>
@@ -3933,6 +3866,73 @@
     <param>
       <key>_coordinate</key>
       <value>(416, 136)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>analog_fm_demod_cf</key>
+    <param>
+      <key>id</key>
+      <value>analog_fm_demod_cf_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>chan_rate</key>
+      <value>audio_rate*3</value>
+    </param>
+    <param>
+      <key>audio_decim</key>
+      <value>3</value>
+    </param>
+    <param>
+      <key>deviation</key>
+      <value>dstar_bandwidth*2</value>
+    </param>
+    <param>
+      <key>audio_pass</key>
+      <value>dstar_bandwidth*2</value>
+    </param>
+    <param>
+      <key>audio_stop</key>
+      <value>dstar_bandwidth*3</value>
+    </param>
+    <param>
+      <key>gain</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>tau</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(152, 312)</value>
     </param>
     <param>
       <key>_rotation</key>
