@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 21:39:08 2015
+# Generated: Wed Nov  4 21:39:36 2015
 ##################################################
 
 from gnuradio import analog
@@ -58,7 +58,7 @@ class top_block(gr.top_block):
         self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, audio_rate*5, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.audio_sink_1 = audio.sink(audio_rate, "plughw:11,0", False)
+        self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", True)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
         	channel_rate=audio_rate*5,
         	audio_decim=5,
