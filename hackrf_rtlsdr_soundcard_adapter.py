@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 19:10:11 2015
+# Generated: Wed Nov  4 19:12:49 2015
 ##################################################
 
 from gnuradio import analog
@@ -59,6 +59,7 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
         self.dc_blocker_xx_0 = filter.dc_blocker_ff(128, True)
+        self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:2,0", True)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
@@ -74,6 +75,7 @@ class top_block(gr.top_block):
         ##################################################
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
+        self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.dc_blocker_xx_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
@@ -108,8 +110,8 @@ class top_block(gr.top_block):
 
     def set_out_frequency_offset(self, out_frequency_offset):
         self.out_frequency_offset = out_frequency_offset
-        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
         self.freq_xlating_fft_filter_ccc_0.set_center_freq(0-self.out_frequency_offset)
+        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
 
     def get_out_frequency(self):
         return self.out_frequency
