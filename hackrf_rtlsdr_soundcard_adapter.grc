@@ -3692,10 +3692,10 @@
     </param>
   </block>
   <block>
-    <key>blocks_udp_sink</key>
+    <key>blocks_multiply_const_vxx</key>
     <param>
       <key>id</key>
-      <value>blocks_udp_sink_1_0</value>
+      <value>blocks_multiply_const_vxx_1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -3703,23 +3703,11 @@
     </param>
     <param>
       <key>type</key>
-      <value>complex</value>
+      <value>float</value>
     </param>
     <param>
-      <key>ipaddr</key>
-      <value>10.224.224.5</value>
-    </param>
-    <param>
-      <key>port</key>
-      <value>10225</value>
-    </param>
-    <param>
-      <key>psize</key>
-      <value>1472</value>
-    </param>
-    <param>
-      <key>eof</key>
-      <value>False</value>
+      <key>const</key>
+      <value>0-in_final_gain if in_audio_inverted else in_final_gain</value>
     </param>
     <param>
       <key>vlen</key>
@@ -3734,12 +3722,20 @@
       <value></value>
     </param>
     <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>comment</key>
       <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(600, 48)</value>
+      <value>(296, 341)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3822,10 +3818,10 @@
     </param>
   </block>
   <block>
-    <key>blocks_multiply_const_vxx</key>
+    <key>blocks_udp_sink</key>
     <param>
       <key>id</key>
-      <value>blocks_multiply_const_vxx_1</value>
+      <value>blocks_udp_sink_1_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -3833,11 +3829,23 @@
     </param>
     <param>
       <key>type</key>
-      <value>float</value>
+      <value>complex</value>
     </param>
     <param>
-      <key>const</key>
-      <value>0-in_final_gain if in_audio_inverted else in_final_gain</value>
+      <key>ipaddr</key>
+      <value>10.224.224.5</value>
+    </param>
+    <param>
+      <key>port</key>
+      <value>10225</value>
+    </param>
+    <param>
+      <key>psize</key>
+      <value>1472</value>
+    </param>
+    <param>
+      <key>eof</key>
+      <value>False</value>
     </param>
     <param>
       <key>vlen</key>
@@ -3852,20 +3860,12 @@
       <value></value>
     </param>
     <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
       <key>comment</key>
       <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(296, 341)</value>
+      <value>(600, 48)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3892,15 +3892,15 @@
     </param>
     <param>
       <key>deviation</key>
-      <value>dstar_bandwidth*2</value>
+      <value>dstar_bandwidth</value>
     </param>
     <param>
       <key>audio_pass</key>
-      <value>dstar_bandwidth*2</value>
+      <value>dstar_bandwidth</value>
     </param>
     <param>
       <key>audio_stop</key>
-      <value>dstar_bandwidth*2+1e3</value>
+      <value>dstar_bandwidth+1e3</value>
     </param>
     <param>
       <key>gain</key>
@@ -4012,14 +4012,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>analog_fm_demod_cf_0</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
+    <sink_block_id>blocks_udp_sink_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>low_pass_filter_1</source_block_id>
-    <sink_block_id>analog_fm_demod_cf_0</sink_block_id>
+    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
+    <sink_block_id>audio_sink_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -4030,14 +4030,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
-    <sink_block_id>blocks_udp_sink_1</sink_block_id>
+    <source_block_id>low_pass_filter_1</source_block_id>
+    <sink_block_id>analog_fm_demod_cf_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
-    <sink_block_id>audio_sink_1</sink_block_id>
+    <source_block_id>analog_fm_demod_cf_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
