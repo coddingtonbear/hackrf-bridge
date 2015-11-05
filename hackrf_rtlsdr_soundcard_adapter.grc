@@ -3959,7 +3959,7 @@
     </param>
     <param>
       <key>audio_stop</key>
-      <value>dstar_bandwidth*2+1e3</value>
+      <value>dstar_bandwidth*3</value>
     </param>
     <param>
       <key>gain</key>
@@ -4089,12 +4089,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>analog_fm_demod_cf_0</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>low_pass_filter_1</source_block_id>
     <sink_block_id>analog_pwr_squelch_xx_0_0</sink_block_id>
     <source_key>0</source_key>
@@ -4103,6 +4097,12 @@
   <connection>
     <source_block_id>analog_pwr_squelch_xx_0_0</source_block_id>
     <sink_block_id>analog_fm_demod_cf_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>analog_fm_demod_cf_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
