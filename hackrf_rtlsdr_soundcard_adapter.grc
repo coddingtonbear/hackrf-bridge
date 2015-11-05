@@ -2981,11 +2981,11 @@
     </param>
     <param>
       <key>if_gain0</key>
-      <value>0</value>
+      <value>30</value>
     </param>
     <param>
       <key>bb_gain0</key>
-      <value>0</value>
+      <value>30</value>
     </param>
     <param>
       <key>ant0</key>
