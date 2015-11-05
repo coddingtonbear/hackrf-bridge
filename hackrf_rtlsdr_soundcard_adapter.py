@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 19:28:24 2015
+# Generated: Wed Nov  4 19:29:35 2015
 ##################################################
 
 from gnuradio import analog
@@ -56,7 +56,7 @@ class top_block(gr.top_block):
                 fractional_bw=None,
         )
         self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, audio_rate*5, dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
+        	1, audio_rate*5, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
         self.dc_blocker_xx_0_0 = filter.dc_blocker_cc(128, True)
         self.blocks_udp_sink_1_0 = blocks.udp_sink(gr.sizeof_gr_complex*1, "10.224.224.5", 10225, 1472, False)
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
@@ -127,14 +127,14 @@ class top_block(gr.top_block):
 
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
     def get_audio_rate(self):
         return self.audio_rate
 
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
 
 if __name__ == '__main__':
