@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 12:47:19 2015
+# Generated: Wed Nov  4 18:35:42 2015
 ##################################################
 
 from gnuradio import analog
@@ -27,7 +27,7 @@ class top_block(gr.top_block):
         ##################################################
         self.audio_rate = audio_rate = int(48e3)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
-        self.out_gain = out_gain = .05
+        self.out_gain = out_gain = .15
         self.out_frequency_offset = out_frequency_offset = -35e3
         self.out_frequency = out_frequency = 145.521e6
         self.out_audio_inverted = out_audio_inverted = False
@@ -58,10 +58,10 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
-        self.blocks_wavfile_sink_0 = blocks.wavfile_sink("/tmp/dstar_output.wav", 1, audio_rate, 8)
+        self.dc_blocker_xx_0 = filter.dc_blocker_ff(128, True)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
-        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-40, 1, 1, True)
+        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
         	quad_rate=int(out_intermediary_rate),
@@ -74,9 +74,9 @@ class top_block(gr.top_block):
         ##################################################
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
-        self.connect((self.audio_source_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
-        self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
+        self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
+        self.connect((self.dc_blocker_xx_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
         self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))    
         self.connect((self.rational_resampler_xxx_3, 0), (self.osmosdr_sink_0, 0))    
@@ -108,8 +108,8 @@ class top_block(gr.top_block):
 
     def set_out_frequency_offset(self, out_frequency_offset):
         self.out_frequency_offset = out_frequency_offset
-        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
         self.freq_xlating_fft_filter_ccc_0.set_center_freq(0-self.out_frequency_offset)
+        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
 
     def get_out_frequency(self):
         return self.out_frequency
