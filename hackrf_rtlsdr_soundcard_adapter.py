@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 15:47:24 2015
+# Generated: Thu Nov  5 15:48:27 2015
 ##################################################
 
 from gnuradio import analog
@@ -35,7 +35,7 @@ class top_block(gr.top_block):
         self.in_frequency_offset = in_frequency_offset = 0
         self.in_frequency = in_frequency = 145.551e6
         self.in_final_gain = in_final_gain = 5
-        self.in_decimation_factor = in_decimation_factor = 8
+        self.in_decimation_factor = in_decimation_factor = 10
         self.in_audio_inverted = in_audio_inverted = True
         self.hackrf_rate = hackrf_rate = 2e6
         self.dstar_bandwidth = dstar_bandwidth = 6.5e3
