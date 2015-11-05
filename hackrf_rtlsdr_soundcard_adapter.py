@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 12:07:03 2015
+# Generated: Thu Nov  5 12:09:56 2015
 ##################################################
 
 from gnuradio import analog
@@ -62,7 +62,7 @@ class top_block(gr.top_block):
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, audio_rate,True)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
+        self.audio_sink_1 = audio.sink(audio_rate, "hw:1,0", False)
         self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_GAUSSIAN, 1, 0)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
         	channel_rate=audio_rate*4,
