@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 13:47:59 2015
+# Generated: Thu Nov  5 13:50:43 2015
 ##################################################
 
 from gnuradio import analog
@@ -58,8 +58,10 @@ class top_block(gr.top_block):
         )
         self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, audio_rate*3, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
+        self.blocks_wavfile_sink_1 = blocks.wavfile_sink("/tmp/dstar_actual_audio_output.wav", 1, audio_rate, 8)
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
+        self.audio_source_1 = audio.source(audio_rate, "hw:11,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
         	channel_rate=audio_rate*3,
@@ -75,6 +77,7 @@ class top_block(gr.top_block):
         # Connections
         ##################################################
         self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
+        self.connect((self.audio_source_1, 0), (self.blocks_wavfile_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_udp_sink_1, 0))    
         self.connect((self.low_pass_filter_1, 0), (self.analog_fm_demod_cf_0, 0))    
