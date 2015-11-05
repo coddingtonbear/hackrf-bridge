@@ -3472,53 +3472,6 @@
     </param>
   </block>
   <block>
-    <key>audio_sink</key>
-    <param>
-      <key>id</key>
-      <value>audio_sink_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>audio_rate</value>
-    </param>
-    <param>
-      <key>device_name</key>
-      <value>hw:11,0</value>
-    </param>
-    <param>
-      <key>ok_to_block</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(448, 315)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_multiply_const_vxx</key>
     <param>
       <key>id</key>
@@ -3681,61 +3634,6 @@
     <param>
       <key>_coordinate</key>
       <value>(240, 608)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_udp_sink</key>
-    <param>
-      <key>id</key>
-      <value>blocks_udp_sink_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>ipaddr</key>
-      <value>10.224.224.5</value>
-    </param>
-    <param>
-      <key>port</key>
-      <value>10223</value>
-    </param>
-    <param>
-      <key>psize</key>
-      <value>1472</value>
-    </param>
-    <param>
-      <key>eof</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(616, 328)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3932,6 +3830,53 @@
     </param>
   </block>
   <block>
+    <key>audio_sink</key>
+    <param>
+      <key>id</key>
+      <value>audio_sink_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>device_name</key>
+      <value>hw:11,0</value>
+    </param>
+    <param>
+      <key>ok_to_block</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>num_inputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(448, 315)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>analog_fm_demod_cf</key>
     <param>
       <key>id</key>
@@ -3992,6 +3937,61 @@
     <param>
       <key>_coordinate</key>
       <value>(688, 136)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_udp_sink</key>
+    <param>
+      <key>id</key>
+      <value>blocks_udp_sink_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>ipaddr</key>
+      <value>10.224.224.5</value>
+    </param>
+    <param>
+      <key>port</key>
+      <value>10223</value>
+    </param>
+    <param>
+      <key>psize</key>
+      <value>1472</value>
+    </param>
+    <param>
+      <key>eof</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(616, 328)</value>
     </param>
     <param>
       <key>_rotation</key>
