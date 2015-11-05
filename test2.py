@@ -22,12 +22,16 @@ class top_block(gr.top_block):
         # Blocks
         ##################################################
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_float*1)
+        import time
+        time.sleep(5)
         self.audio_sink_0 = audio.sink(int(48e3), "hw:0,0", True)
 
         ##################################################
         # Connections
         ##################################################
+        time.sleep(5)
         self.connect((self.blocks_null_source_0, 0), (self.audio_sink_0, 0))    
+        time.sleep(5)
 
 
 
