@@ -12,6 +12,7 @@ from gnuradio import gr
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from optparse import OptionParser
+import time
 
 class top_block(gr.top_block):
 
@@ -22,16 +23,12 @@ class top_block(gr.top_block):
         # Blocks
         ##################################################
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_float*1)
-        import time
-        time.sleep(5)
         self.audio_sink_0 = audio.sink(int(48e3), "hw:0,0", True)
 
         ##################################################
         # Connections
         ##################################################
-        time.sleep(5)
         self.connect((self.blocks_null_source_0, 0), (self.audio_sink_0, 0))    
-        time.sleep(5)
 
 
 
@@ -39,6 +36,7 @@ if __name__ == '__main__':
     parser = OptionParser(option_class=eng_option, usage="%prog: [options]")
     (options, args) = parser.parse_args()
     tb = top_block()
+    time.sleep(5)
     tb.start()
     try:
         raw_input('Press Enter to quit: ')
