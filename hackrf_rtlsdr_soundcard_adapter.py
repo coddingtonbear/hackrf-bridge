@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 15:18:58 2015
+# Generated: Thu Nov  5 15:19:41 2015
 ##################################################
 
 from gnuradio import analog
@@ -64,8 +64,8 @@ class top_block(gr.top_block):
         	channel_rate=audio_rate*in_decimation_factor,
         	audio_decim=in_decimation_factor,
         	deviation=dstar_bandwidth*2,
-        	audio_pass=dstar_bandwidth*2,
-        	audio_stop=dstar_bandwidth*3,
+        	audio_pass=dstar_bandwidth,
+        	audio_stop=dstar_bandwidth+1e3,
         	gain=1,
         	tau=0,
         )
