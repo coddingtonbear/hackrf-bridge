@@ -22,6 +22,8 @@ class top_block(gr.top_block):
         # Blocks
         ##################################################
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_float*1)
+        import pdb
+        pdb.set_trace()
         self.audio_sink_0 = audio.sink(int(48e3), "hw:0,0", True)
 
         ##################################################
