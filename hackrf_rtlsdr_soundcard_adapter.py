@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 08:56:18 2015
+# Generated: Thu Nov  5 08:58:13 2015
 ##################################################
 
 from gnuradio import analog
@@ -61,6 +61,7 @@ class top_block(gr.top_block):
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
+        self.analog_pwr_squelch_xx_0_0 = analog.pwr_squelch_cc(-50, 1, 1, False)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
         	channel_rate=audio_rate*4,
         	audio_decim=5,
@@ -75,9 +76,10 @@ class top_block(gr.top_block):
         # Connections
         ##################################################
         self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
+        self.connect((self.analog_pwr_squelch_xx_0_0, 0), (self.analog_fm_demod_cf_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_udp_sink_1, 0))    
-        self.connect((self.low_pass_filter_1, 0), (self.analog_fm_demod_cf_0, 0))    
+        self.connect((self.low_pass_filter_1, 0), (self.analog_pwr_squelch_xx_0_0, 0))    
         self.connect((self.low_pass_filter_1, 0), (self.blocks_udp_sink_1_0, 0))    
         self.connect((self.rational_resampler_xxx_1, 0), (self.low_pass_filter_1, 0))    
         self.connect((self.rtlsdr_source_0, 0), (self.rational_resampler_xxx_1, 0))    
