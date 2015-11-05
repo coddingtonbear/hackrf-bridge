@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 15:12:16 2015
+# Generated: Thu Nov  5 15:13:55 2015
 ##################################################
 
 from gnuradio import analog
@@ -25,7 +25,7 @@ class top_block(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.rtl_rate = rtl_rate = int(3.2e6)
+        self.rtl_rate = rtl_rate = int(2.4e6)
         self.in_frequency_offset = in_frequency_offset = 0
         self.in_frequency = in_frequency = 145.551e6
         self.in_final_gain = in_final_gain = 5
@@ -50,20 +50,20 @@ class top_block(gr.top_block):
         self.rtlsdr_source_0.set_bandwidth(0, 0)
           
         self.rational_resampler_xxx_1 = filter.rational_resampler_ccc(
-                interpolation=audio_rate*3,
+                interpolation=audio_rate*5,
                 decimation=rtl_rate,
                 taps=None,
                 fractional_bw=None,
         )
         self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, audio_rate*3, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
+        	1, audio_rate*5, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
         self.blocks_wavfile_sink_1 = blocks.wavfile_sink("/tmp/dstar_actual_output.wav", 1, audio_rate, 8)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
         self.audio_source_1 = audio.source(audio_rate, "hw:11,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
-        	channel_rate=audio_rate*3,
-        	audio_decim=3,
+        	channel_rate=audio_rate*5,
+        	audio_decim=5,
         	deviation=dstar_bandwidth*2,
         	audio_pass=dstar_bandwidth*2,
         	audio_stop=dstar_bandwidth*3,
@@ -122,14 +122,14 @@ class top_block(gr.top_block):
 
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*3, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
     def get_audio_rate(self):
         return self.audio_rate
 
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*3, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
 
 if __name__ == '__main__':
