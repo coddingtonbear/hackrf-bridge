@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 09:13:36 2015
+# Generated: Thu Nov  5 09:15:26 2015
 ##################################################
 
 from gnuradio import analog
@@ -39,7 +39,7 @@ class top_block(gr.top_block):
         self.rtlsdr_source_0 = osmosdr.source( args="numchan=" + str(1) + " " + "" )
         self.rtlsdr_source_0.set_sample_rate(rtl_rate)
         self.rtlsdr_source_0.set_center_freq(in_frequency+in_frequency_offset, 0)
-        self.rtlsdr_source_0.set_freq_corr(80, 0)
+        self.rtlsdr_source_0.set_freq_corr(70, 0)
         self.rtlsdr_source_0.set_dc_offset_mode(0, 0)
         self.rtlsdr_source_0.set_iq_balance_mode(0, 0)
         self.rtlsdr_source_0.set_gain_mode(False, 0)
