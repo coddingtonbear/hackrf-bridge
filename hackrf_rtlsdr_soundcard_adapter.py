@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 11:23:43 2015
+# Generated: Thu Nov  5 11:26:09 2015
 ##################################################
 
 from gnuradio import analog
@@ -61,8 +61,8 @@ class top_block(gr.top_block):
         self.blocks_udp_sink_1_0 = blocks.udp_sink(gr.sizeof_gr_complex*1, "10.224.224.5", 10225, 1472, False)
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, rtl_rate,True)
+        self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.blocks_add_xx_0 = blocks.add_vff(1)
         self.audio_source_1 = audio.source(audio_rate, "hw:10,1", False)
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
         self.analog_pwr_squelch_xx_0_0 = analog.pwr_squelch_cc(-60, 1, 1, False)
@@ -81,10 +81,9 @@ class top_block(gr.top_block):
         ##################################################
         self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
         self.connect((self.analog_pwr_squelch_xx_0_0, 0), (self.analog_fm_demod_cf_0, 0))    
-        self.connect((self.audio_source_1, 0), (self.blocks_add_xx_0, 1))    
-        self.connect((self.blocks_add_xx_0, 0), (self.audio_sink_1, 0))    
-        self.connect((self.blocks_add_xx_0, 0), (self.blocks_udp_sink_1, 0))    
-        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_add_xx_0, 0))    
+        self.connect((self.audio_source_1, 0), (self.audio_sink_1, 0))    
+        self.connect((self.audio_source_1, 0), (self.blocks_udp_sink_1, 0))    
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_null_sink_0, 0))    
         self.connect((self.blocks_throttle_0, 0), (self.rational_resampler_xxx_1, 0))    
         self.connect((self.dc_blocker_xx_1, 0), (self.analog_pwr_squelch_xx_0_0, 0))    
         self.connect((self.dc_blocker_xx_1, 0), (self.blocks_udp_sink_1_0, 0))    
