@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 18:45:33 2015
+# Generated: Wed Nov  4 18:46:44 2015
 ##################################################
 
 from gnuradio import analog
@@ -48,8 +48,8 @@ class top_block(gr.top_block):
         self.osmosdr_sink_0.set_center_freq(out_frequency-out_frequency_offset, 0)
         self.osmosdr_sink_0.set_freq_corr(4, 0)
         self.osmosdr_sink_0.set_gain(0, 0)
-        self.osmosdr_sink_0.set_if_gain(0, 0)
-        self.osmosdr_sink_0.set_bb_gain(0, 0)
+        self.osmosdr_sink_0.set_if_gain(10, 0)
+        self.osmosdr_sink_0.set_bb_gain(10, 0)
         self.osmosdr_sink_0.set_antenna("0", 0)
         self.osmosdr_sink_0.set_bandwidth(100e3, 0)
           
