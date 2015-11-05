@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 08:50:56 2015
+# Generated: Thu Nov  5 08:53:19 2015
 ##################################################
 
 from gnuradio import analog
@@ -50,19 +50,19 @@ class top_block(gr.top_block):
         self.rtlsdr_source_0.set_bandwidth(0, 0)
           
         self.rational_resampler_xxx_1 = filter.rational_resampler_ccc(
-                interpolation=audio_rate*5,
+                interpolation=audio_rate*4,
                 decimation=rtl_rate,
                 taps=None,
                 fractional_bw=None,
         )
         self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, audio_rate*5, dstar_bandwidth*3, 200, firdes.WIN_HAMMING, 6.76))
+        	1, audio_rate*4, dstar_bandwidth*3, 200, firdes.WIN_HAMMING, 6.76))
         self.blocks_udp_sink_1_0 = blocks.udp_sink(gr.sizeof_gr_complex*1, "10.224.224.5", 10225, 1472, False)
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
         self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
-        	channel_rate=audio_rate*5,
+        	channel_rate=audio_rate*4,
         	audio_decim=5,
         	deviation=dstar_bandwidth,
         	audio_pass=dstar_bandwidth*2,
@@ -123,14 +123,14 @@ class top_block(gr.top_block):
 
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth*3, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*4, self.dstar_bandwidth*3, 200, firdes.WIN_HAMMING, 6.76))
 
     def get_audio_rate(self):
         return self.audio_rate
 
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth*3, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*4, self.dstar_bandwidth*3, 200, firdes.WIN_HAMMING, 6.76))
 
 
 if __name__ == '__main__':
