@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 07:56:39 2015
+# Generated: Thu Nov  5 07:59:52 2015
 ##################################################
 
 if __name__ == '__main__':
@@ -17,7 +17,6 @@ if __name__ == '__main__':
 
 from PyQt4 import Qt
 from gnuradio import analog
-from gnuradio import audio
 from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import filter
@@ -91,8 +90,8 @@ class top_block(gr.top_block, Qt.QWidget):
         )
         self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, audio_rate*5, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
+        self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.audio_sink_1 = audio.sink(audio_rate, "hw:11,0", False)
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
         	channel_rate=audio_rate*5,
         	audio_decim=5,
@@ -107,7 +106,7 @@ class top_block(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
-        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_null_sink_0, 0))    
         self.connect((self.low_pass_filter_1, 0), (self.analog_fm_demod_cf_0, 0))    
         self.connect((self.rational_resampler_xxx_1, 0), (self.low_pass_filter_1, 0))    
         self.connect((self.rtlsdr_source_0, 0), (self.rational_resampler_xxx_1, 0))    
