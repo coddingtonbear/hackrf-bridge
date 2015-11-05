@@ -3947,11 +3947,11 @@
     </param>
     <param>
       <key>audio_decim</key>
-      <value>3</value>
+      <value>4</value>
     </param>
     <param>
       <key>deviation</key>
-      <value>dstar_bandwidth</value>
+      <value>dstar_bandwidth*2</value>
     </param>
     <param>
       <key>audio_pass</key>
