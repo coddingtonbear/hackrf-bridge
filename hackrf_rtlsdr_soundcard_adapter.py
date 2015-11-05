@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 18:58:38 2015
+# Generated: Wed Nov  4 19:02:10 2015
 ##################################################
 
 from gnuradio import analog
@@ -35,7 +35,7 @@ class top_block(gr.top_block):
         self.in_frequency_offset = in_frequency_offset = 0
         self.in_frequency = in_frequency = 145.551e6
         self.in_final_gain = in_final_gain = 4
-        self.in_audio_inverted = in_audio_inverted = True
+        self.in_audio_inverted = in_audio_inverted = False
         self.hackrf_rate = hackrf_rate = 2e6
         self.dstar_bandwidth = dstar_bandwidth = 6.5e3
 
@@ -88,7 +88,7 @@ class top_block(gr.top_block):
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
+        self.audio_source_0 = audio.source(audio_rate, "hw:2,0", True)
         self.audio_sink_1 = audio.sink(audio_rate, "hw:1,0", False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
@@ -132,8 +132,8 @@ class top_block(gr.top_block):
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
         self.set_out_intermediary_rate(self.audio_rate*4)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
         self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
 
     def get_rtl_rate(self):
         return self.rtl_rate
@@ -217,8 +217,8 @@ class top_block(gr.top_block):
 
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
         self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*5, self.dstar_bandwidth, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
 
 
 if __name__ == '__main__':
