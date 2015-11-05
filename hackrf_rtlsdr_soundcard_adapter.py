@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Nov  4 19:36:51 2015
+# Generated: Wed Nov  4 19:37:37 2015
 ##################################################
 
 from gnuradio import analog
@@ -63,7 +63,7 @@ class top_block(gr.top_block):
         self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
         	channel_rate=audio_rate*5,
         	audio_decim=5,
-        	deviation=dstar_bandwidth,
+        	deviation=dstar_bandwidth*2,
         	audio_pass=dstar_bandwidth,
         	audio_stop=dstar_bandwidth+1e3,
         	gain=1,

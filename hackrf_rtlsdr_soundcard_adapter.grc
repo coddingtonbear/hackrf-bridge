@@ -3837,7 +3837,7 @@
     </param>
     <param>
       <key>deviation</key>
-      <value>dstar_bandwidth</value>
+      <value>dstar_bandwidth*2</value>
     </param>
     <param>
       <key>audio_pass</key>
@@ -3877,7 +3877,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 136)</value>
+      <value>(552, 136)</value>
     </param>
     <param>
       <key>_rotation</key>
