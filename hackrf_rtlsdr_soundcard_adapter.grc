@@ -2977,15 +2977,15 @@
     </param>
     <param>
       <key>gain0</key>
-      <value>0</value>
+      <value>14</value>
     </param>
     <param>
       <key>if_gain0</key>
-      <value>10</value>
+      <value>0</value>
     </param>
     <param>
       <key>bb_gain0</key>
-      <value>10</value>
+      <value>0</value>
     </param>
     <param>
       <key>ant0</key>
