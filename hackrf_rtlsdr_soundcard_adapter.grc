@@ -77,6 +77,37 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>in_decimation_factor</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>7</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(400, 75)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>rtl_rate</value>
     </param>
     <param>
@@ -3915,7 +3946,7 @@
     </param>
     <param>
       <key>interp</key>
-      <value>audio_rate*5</value>
+      <value>audio_rate*in_decimation_factor</value>
     </param>
     <param>
       <key>decim</key>
@@ -3986,7 +4017,7 @@
     </param>
     <param>
       <key>samp_rate</key>
-      <value>audio_rate*5</value>
+      <value>audio_rate*in_decimation_factor</value>
     </param>
     <param>
       <key>cutoff_freq</key>
@@ -4045,11 +4076,11 @@
     </param>
     <param>
       <key>chan_rate</key>
-      <value>audio_rate*5</value>
+      <value>audio_rate*in_decimation_factor</value>
     </param>
     <param>
       <key>audio_decim</key>
-      <value>5</value>
+      <value>in_decimation_factor</value>
     </param>
     <param>
       <key>deviation</key>
@@ -4191,12 +4222,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>rational_resampler_xxx_1</source_block_id>
-    <sink_block_id>low_pass_filter_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>audio_source_1</source_block_id>
     <sink_block_id>blocks_wavfile_sink_1</sink_block_id>
     <source_key>0</source_key>
@@ -4217,6 +4242,12 @@
   <connection>
     <source_block_id>analog_fm_demod_cf_0</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rational_resampler_xxx_1</source_block_id>
+    <sink_block_id>low_pass_filter_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
