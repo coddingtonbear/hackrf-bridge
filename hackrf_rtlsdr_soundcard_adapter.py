@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 15:53:20 2015
+# Generated: Thu Nov  5 22:17:06 2015
 ##################################################
 
 from gnuradio import analog
@@ -104,23 +104,20 @@ class top_block(gr.top_block):
         	tau=0,
         	max_dev=dstar_bandwidth,
         )
-        self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
-        	channel_rate=audio_rate*in_decimation_factor,
-        	audio_decim=in_decimation_factor,
-        	deviation=dstar_bandwidth*2,
-        	audio_pass=dstar_bandwidth,
-        	audio_stop=dstar_bandwidth+1e3,
-        	gain=1,
+        self.analog_nbfm_rx_0 = analog.nbfm_rx(
+        	audio_rate=audio_rate,
+        	quad_rate=audio_rate*in_decimation_factor,
         	tau=0,
+        	max_dev=dstar_bandwidth,
         )
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
+        self.connect((self.analog_nbfm_rx_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
-        self.connect((self.analog_pwr_squelch_xx_1, 0), (self.analog_fm_demod_cf_0, 0))    
+        self.connect((self.analog_pwr_squelch_xx_1, 0), (self.analog_nbfm_rx_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
