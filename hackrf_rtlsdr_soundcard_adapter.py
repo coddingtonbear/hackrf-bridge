@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 17:12:42 2015
+# Generated: Fri Nov  6 17:13:20 2015
 ##################################################
 
 from gnuradio import analog
@@ -86,6 +86,7 @@ class top_block(gr.top_block):
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
+        self.audio_sink_1 = audio.sink(audio_rate, "plughw:11,0", False)
         self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-300, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
@@ -104,6 +105,7 @@ class top_block(gr.top_block):
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
+        self.connect((self.blocks_complex_to_real_0, 0), (self.audio_sink_1, 0))    
         self.connect((self.blocks_complex_to_real_0, 0), (self.blocks_wavfile_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.dc_blocker_xx_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
