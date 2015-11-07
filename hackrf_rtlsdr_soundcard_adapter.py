@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sat Nov  7 02:32:42 2015
+# Generated: Sat Nov  7 02:37:58 2015
 ##################################################
 
 from gnuradio import analog
@@ -66,9 +66,9 @@ class top_block(gr.top_block):
         self.osmosdr_sink_0.set_sample_rate(hackrf_rate)
         self.osmosdr_sink_0.set_center_freq(out_frequency-out_frequency_offset, 0)
         self.osmosdr_sink_0.set_freq_corr(4, 0)
-        self.osmosdr_sink_0.set_gain(0, 0)
-        self.osmosdr_sink_0.set_if_gain(20, 0)
-        self.osmosdr_sink_0.set_bb_gain(20, 0)
+        self.osmosdr_sink_0.set_gain(14, 0)
+        self.osmosdr_sink_0.set_if_gain(0, 0)
+        self.osmosdr_sink_0.set_bb_gain(0, 0)
         self.osmosdr_sink_0.set_antenna("0", 0)
         self.osmosdr_sink_0.set_bandwidth(100e3, 0)
           
@@ -130,8 +130,8 @@ class top_block(gr.top_block):
 
     def set_rtl_rate(self, rtl_rate):
         self.rtl_rate = rtl_rate
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
         self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
 
     def get_out_intermediary_rate(self):
         return self.out_intermediary_rate
