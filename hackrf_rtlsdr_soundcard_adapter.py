@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 18:37:12 2015
+# Generated: Fri Nov  6 18:52:03 2015
 ##################################################
 
 from gnuradio import analog
@@ -130,8 +130,8 @@ class top_block(gr.top_block):
 
     def set_rtl_rate(self, rtl_rate):
         self.rtl_rate = rtl_rate
-        self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
         self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
+        self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
 
     def get_out_intermediary_rate(self):
         return self.out_intermediary_rate
@@ -223,9 +223,4 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
     tb = top_block()
     tb.start()
-    try:
-        raw_input('Press Enter to quit: ')
-    except EOFError:
-        pass
-    tb.stop()
     tb.wait()
