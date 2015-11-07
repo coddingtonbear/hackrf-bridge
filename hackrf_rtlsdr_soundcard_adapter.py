@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 17:28:27 2015
+# Generated: Fri Nov  6 18:20:38 2015
 ##################################################
 
 from gnuradio import analog
@@ -80,15 +80,14 @@ class top_block(gr.top_block):
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
         self.dc_blocker_xx_0 = filter.dc_blocker_ff(128, True)
-        self.blocks_wavfile_sink_1 = blocks.wavfile_sink("/tmp/dstar_actual_output.wav", 1, audio_rate, 8)
         self.blocks_wavfile_sink_0 = blocks.wavfile_sink("/tmp/dstar_output.wav", 1, audio_rate, 8)
+        self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.audio_source_1 = audio.source(audio_rate, "plughw:11,1", True)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "plughw:11,0", True)
-        self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-300, 1, 1, False)
+        self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-30, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
@@ -113,8 +112,8 @@ class top_block(gr.top_block):
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
-        self.connect((self.audio_source_1, 0), (self.blocks_wavfile_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_udp_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.dc_blocker_xx_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
@@ -228,8 +227,6 @@ class top_block(gr.top_block):
 if __name__ == '__main__':
     parser = OptionParser(option_class=eng_option, usage="%prog: [options]")
     (options, args) = parser.parse_args()
-    if gr.enable_realtime_scheduling() != gr.RT_OK:
-        print "Error: failed to enable realtime scheduling."
     tb = top_block()
     tb.start()
     try:
