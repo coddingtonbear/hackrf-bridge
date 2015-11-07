@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 18:52:03 2015
+# Generated: Fri Nov  6 22:47:00 2015
 ##################################################
 
 from gnuradio import analog
@@ -66,9 +66,9 @@ class top_block(gr.top_block):
         self.osmosdr_sink_0.set_sample_rate(hackrf_rate)
         self.osmosdr_sink_0.set_center_freq(out_frequency-out_frequency_offset, 0)
         self.osmosdr_sink_0.set_freq_corr(4, 0)
-        self.osmosdr_sink_0.set_gain(14, 0)
-        self.osmosdr_sink_0.set_if_gain(30, 0)
-        self.osmosdr_sink_0.set_bb_gain(30, 0)
+        self.osmosdr_sink_0.set_gain(0, 0)
+        self.osmosdr_sink_0.set_if_gain(0, 0)
+        self.osmosdr_sink_0.set_bb_gain(0, 0)
         self.osmosdr_sink_0.set_antenna("0", 0)
         self.osmosdr_sink_0.set_bandwidth(100e3, 0)
           
@@ -85,7 +85,7 @@ class top_block(gr.top_block):
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "plughw:11,0", True)
         self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-30, 1, 1, False)
-        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
+        self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-60, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
         	quad_rate=int(out_intermediary_rate),
@@ -151,8 +151,8 @@ class top_block(gr.top_block):
 
     def set_out_frequency_offset(self, out_frequency_offset):
         self.out_frequency_offset = out_frequency_offset
-        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
         self.freq_xlating_fft_filter_ccc_0.set_center_freq(0-self.out_frequency_offset)
+        self.osmosdr_sink_0.set_center_freq(self.out_frequency-self.out_frequency_offset, 0)
 
     def get_out_frequency(self):
         return self.out_frequency
