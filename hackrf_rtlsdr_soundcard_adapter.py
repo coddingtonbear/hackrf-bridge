@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Thu Nov  5 22:19:24 2015
+# Generated: Fri Nov  6 16:52:31 2015
 ##################################################
 
 from gnuradio import analog
@@ -26,7 +26,7 @@ class top_block(gr.top_block):
         # Variables
         ##################################################
         self.audio_rate = audio_rate = int(48e3)
-        self.rtl_rate = rtl_rate = int(2.4e6)
+        self.rtl_rate = rtl_rate = int(240e3)
         self.out_intermediary_rate = out_intermediary_rate = audio_rate*4
         self.out_gain = out_gain = .25
         self.out_frequency_offset = out_frequency_offset = -50e3
@@ -62,12 +62,6 @@ class top_block(gr.top_block):
                 taps=None,
                 fractional_bw=None,
         )
-        self.rational_resampler_xxx_1 = filter.rational_resampler_ccc(
-                interpolation=audio_rate*in_decimation_factor,
-                decimation=rtl_rate,
-                taps=None,
-                fractional_bw=None,
-        )
         self.osmosdr_sink_0 = osmosdr.sink( args="numchan=" + str(1) + " " + "" )
         self.osmosdr_sink_0.set_sample_rate(hackrf_rate)
         self.osmosdr_sink_0.set_center_freq(out_frequency-out_frequency_offset, 0)
@@ -78,8 +72,8 @@ class top_block(gr.top_block):
         self.osmosdr_sink_0.set_antenna("0", 0)
         self.osmosdr_sink_0.set_bandwidth(100e3, 0)
           
-        self.low_pass_filter_1 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, audio_rate*in_decimation_factor, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1 = filter.fir_filter_ccf(5, firdes.low_pass(
+        	1, rtl_rate, dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
         	1, audio_rate, dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
@@ -95,7 +89,7 @@ class top_block(gr.top_block):
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
         self.audio_source_1 = audio.source(audio_rate, "hw:1,0", True)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
-        self.audio_sink_1 = audio.sink(audio_rate, "hw:1,0", False)
+        self.audio_sink_1 = audio.sink(audio_rate, "plughw:1,0", False)
         self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-30, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
@@ -106,8 +100,8 @@ class top_block(gr.top_block):
         )
         self.analog_nbfm_rx_0 = analog.nbfm_rx(
         	audio_rate=audio_rate,
-        	quad_rate=audio_rate*in_decimation_factor,
-        	tau=0.000000000001,
+        	quad_rate=audio_rate,
+        	tau=0.000000000000000000001,
         	max_dev=dstar_bandwidth,
         )
 
@@ -130,9 +124,8 @@ class top_block(gr.top_block):
         self.connect((self.low_pass_filter_0, 0), (self.analog_nbfm_tx_0, 0))    
         self.connect((self.low_pass_filter_1, 0), (self.analog_pwr_squelch_xx_1, 0))    
         self.connect((self.low_pass_filter_1, 0), (self.blocks_udp_sink_1_0, 0))    
-        self.connect((self.rational_resampler_xxx_1, 0), (self.low_pass_filter_1, 0))    
         self.connect((self.rational_resampler_xxx_3, 0), (self.osmosdr_sink_0, 0))    
-        self.connect((self.rtlsdr_source_0, 0), (self.rational_resampler_xxx_1, 0))    
+        self.connect((self.rtlsdr_source_0, 0), (self.low_pass_filter_1, 0))    
 
 
     def get_audio_rate(self):
@@ -141,7 +134,6 @@ class top_block(gr.top_block):
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
         self.set_out_intermediary_rate(self.audio_rate*4)
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*self.in_decimation_factor, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
 
     def get_rtl_rate(self):
@@ -150,6 +142,7 @@ class top_block(gr.top_block):
     def set_rtl_rate(self, rtl_rate):
         self.rtl_rate = rtl_rate
         self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
     def get_out_intermediary_rate(self):
         return self.out_intermediary_rate
@@ -212,7 +205,6 @@ class top_block(gr.top_block):
 
     def set_in_decimation_factor(self, in_decimation_factor):
         self.in_decimation_factor = in_decimation_factor
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*self.in_decimation_factor, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
     def get_in_audio_inverted(self):
         return self.in_audio_inverted
@@ -233,8 +225,8 @@ class top_block(gr.top_block):
 
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.audio_rate*self.in_decimation_factor, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
 
 if __name__ == '__main__':
