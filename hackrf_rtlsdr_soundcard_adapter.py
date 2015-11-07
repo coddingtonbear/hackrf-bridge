@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 17:18:12 2015
+# Generated: Fri Nov  6 17:23:19 2015
 ##################################################
 
 from gnuradio import analog
@@ -228,6 +228,8 @@ class top_block(gr.top_block):
 if __name__ == '__main__':
     parser = OptionParser(option_class=eng_option, usage="%prog: [options]")
     (options, args) = parser.parse_args()
+    if gr.enable_realtime_scheduling() != gr.RT_OK:
+        print "Error: failed to enable realtime scheduling."
     tb = top_block()
     tb.start()
     try:
