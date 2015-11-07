@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 16:52:31 2015
+# Generated: Fri Nov  6 17:02:40 2015
 ##################################################
 
 from gnuradio import analog
@@ -44,7 +44,7 @@ class top_block(gr.top_block):
         # Blocks
         ##################################################
         self.rtlsdr_source_0 = osmosdr.source( args="numchan=" + str(1) + " " + "" )
-        self.rtlsdr_source_0.set_sample_rate(rtl_rate)
+        self.rtlsdr_source_0.set_sample_rate(rtl_rate+1e3)
         self.rtlsdr_source_0.set_center_freq(in_frequency+in_frequency_offset, 0)
         self.rtlsdr_source_0.set_freq_corr(69, 0)
         self.rtlsdr_source_0.set_dc_offset_mode(0, 0)
@@ -87,7 +87,7 @@ class top_block(gr.top_block):
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
-        self.audio_source_1 = audio.source(audio_rate, "hw:1,0", True)
+        self.audio_source_1 = audio.source(audio_rate, "plughw:1,0", True)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "plughw:1,0", False)
         self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-30, 1, 1, False)
@@ -141,7 +141,7 @@ class top_block(gr.top_block):
 
     def set_rtl_rate(self, rtl_rate):
         self.rtl_rate = rtl_rate
-        self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
+        self.rtlsdr_source_0.set_sample_rate(self.rtl_rate+1e3)
         self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 200, firdes.WIN_HAMMING, 6.76))
 
     def get_out_intermediary_rate(self):
