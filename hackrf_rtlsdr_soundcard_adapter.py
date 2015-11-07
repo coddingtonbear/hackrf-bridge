@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 17:10:36 2015
+# Generated: Fri Nov  6 17:12:42 2015
 ##################################################
 
 from gnuradio import analog
@@ -84,9 +84,8 @@ class top_block(gr.top_block):
         self.blocks_wavfile_sink_0 = blocks.wavfile_sink("/tmp/dstar_output.wav", 1, audio_rate, 8)
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff((0-in_final_gain if in_audio_inverted else in_final_gain, ))
+        self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
-        self.audio_sink_1 = audio.sink(audio_rate, "plughw:11,0", False)
         self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-300, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
@@ -95,25 +94,17 @@ class top_block(gr.top_block):
         	tau=0,
         	max_dev=dstar_bandwidth,
         )
-        self.analog_nbfm_rx_0 = analog.nbfm_rx(
-        	audio_rate=audio_rate,
-        	quad_rate=audio_rate,
-        	tau=0.000000000000000000001,
-        	max_dev=dstar_bandwidth,
-        )
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_nbfm_rx_0, 0), (self.blocks_multiply_const_vxx_1, 0))    
         self.connect((self.analog_nbfm_tx_0, 0), (self.freq_xlating_fft_filter_ccc_0, 0))    
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
-        self.connect((self.analog_pwr_squelch_xx_1, 0), (self.analog_nbfm_rx_0, 0))    
+        self.connect((self.analog_pwr_squelch_xx_1, 0), (self.blocks_complex_to_real_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
-        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
-        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_wavfile_sink_1, 0))    
+        self.connect((self.blocks_complex_to_real_0, 0), (self.blocks_wavfile_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_2, 0), (self.low_pass_filter_0, 0))    
         self.connect((self.dc_blocker_xx_0, 0), (self.analog_pwr_squelch_xx_0, 0))    
         self.connect((self.freq_xlating_fft_filter_ccc_0, 0), (self.rational_resampler_xxx_3, 0))    
@@ -136,8 +127,8 @@ class top_block(gr.top_block):
 
     def set_rtl_rate(self, rtl_rate):
         self.rtl_rate = rtl_rate
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
         self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
 
     def get_out_intermediary_rate(self):
         return self.out_intermediary_rate
@@ -193,7 +184,6 @@ class top_block(gr.top_block):
 
     def set_in_final_gain(self, in_final_gain):
         self.in_final_gain = in_final_gain
-        self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain if self.in_audio_inverted else self.in_final_gain, ))
 
     def get_in_decimation_factor(self):
         return self.in_decimation_factor
@@ -206,7 +196,6 @@ class top_block(gr.top_block):
 
     def set_in_audio_inverted(self, in_audio_inverted):
         self.in_audio_inverted = in_audio_inverted
-        self.blocks_multiply_const_vxx_1.set_k((0-self.in_final_gain if self.in_audio_inverted else self.in_final_gain, ))
 
     def get_hackrf_rate(self):
         return self.hackrf_rate
