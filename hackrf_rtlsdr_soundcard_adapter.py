@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 17:05:59 2015
+# Generated: Fri Nov  6 17:08:18 2015
 ##################################################
 
 from gnuradio import analog
@@ -88,7 +88,7 @@ class top_block(gr.top_block):
         self.audio_source_1 = audio.source(audio_rate, "plughw:11,1", True)
         self.audio_source_0 = audio.source(audio_rate, "hw:10,1", True)
         self.audio_sink_1 = audio.sink(audio_rate, "plughw:11,0", False)
-        self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-30, 1, 1, False)
+        self.analog_pwr_squelch_xx_1 = analog.pwr_squelch_cc(-300, 1, 1, False)
         self.analog_pwr_squelch_xx_0 = analog.pwr_squelch_ff(-80, 1, 1, True)
         self.analog_nbfm_tx_0 = analog.nbfm_tx(
         	audio_rate=int(audio_rate),
