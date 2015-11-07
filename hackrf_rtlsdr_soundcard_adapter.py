@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov  6 18:20:38 2015
+# Generated: Fri Nov  6 18:25:51 2015
 ##################################################
 
 from gnuradio import analog
@@ -73,14 +73,13 @@ class top_block(gr.top_block):
         self.osmosdr_sink_0.set_bandwidth(100e3, 0)
           
         self.low_pass_filter_1 = filter.fir_filter_ccf(5, firdes.low_pass(
-        	1, rtl_rate, dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
+        	1, rtl_rate, dstar_bandwidth*3, 500, firdes.WIN_HAMMING, 6.76))
         self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
         	1, audio_rate, dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
         self.freq_xlating_fft_filter_ccc_0 = filter.freq_xlating_fft_filter_ccc(1, (1, ), 0-out_frequency_offset, out_intermediary_rate)
         self.freq_xlating_fft_filter_ccc_0.set_nthreads(1)
         self.freq_xlating_fft_filter_ccc_0.declare_sample_delay(0)
         self.dc_blocker_xx_0 = filter.dc_blocker_ff(128, True)
-        self.blocks_wavfile_sink_0 = blocks.wavfile_sink("/tmp/dstar_output.wav", 1, audio_rate, 8)
         self.blocks_udp_sink_1 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10223, 1472, False)
         self.blocks_udp_sink_0 = blocks.udp_sink(gr.sizeof_float*1, "10.224.224.5", 10224, 1472, False)
         self.blocks_multiply_const_vxx_2 = blocks.multiply_const_vff(((-1 if out_audio_inverted else 1)*out_gain, ))
@@ -110,7 +109,6 @@ class top_block(gr.top_block):
         self.connect((self.analog_pwr_squelch_xx_0, 0), (self.blocks_multiply_const_vxx_2, 0))    
         self.connect((self.analog_pwr_squelch_xx_1, 0), (self.analog_nbfm_rx_0, 0))    
         self.connect((self.audio_source_0, 0), (self.blocks_udp_sink_0, 0))    
-        self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
         self.connect((self.audio_source_0, 0), (self.dc_blocker_xx_0, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.audio_sink_1, 0))    
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_udp_sink_1, 0))    
@@ -137,7 +135,7 @@ class top_block(gr.top_block):
     def set_rtl_rate(self, rtl_rate):
         self.rtl_rate = rtl_rate
         self.rtlsdr_source_0.set_sample_rate(self.rtl_rate)
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*3, 500, firdes.WIN_HAMMING, 6.76))
 
     def get_out_intermediary_rate(self):
         return self.out_intermediary_rate
@@ -221,7 +219,7 @@ class top_block(gr.top_block):
     def set_dstar_bandwidth(self, dstar_bandwidth):
         self.dstar_bandwidth = dstar_bandwidth
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.audio_rate, self.dstar_bandwidth*2, 200, firdes.WIN_KAISER, 6.76))
-        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*2, 500, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(1, self.rtl_rate, self.dstar_bandwidth*3, 500, firdes.WIN_HAMMING, 6.76))
 
 
 if __name__ == '__main__':
