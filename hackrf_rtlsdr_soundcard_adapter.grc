@@ -3617,61 +3617,6 @@
     </param>
   </block>
   <block>
-    <key>audio_source</key>
-    <param>
-      <key>id</key>
-      <value>audio_source_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>audio_rate</value>
-    </param>
-    <param>
-      <key>device_name</key>
-      <value>plughw:11,1</value>
-    </param>
-    <param>
-      <key>ok_to_block</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>num_outputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(832, 123)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_udp_sink</key>
     <param>
       <key>id</key>
@@ -3861,179 +3806,6 @@
     </param>
   </block>
   <block>
-    <key>analog_nbfm_rx</key>
-    <param>
-      <key>id</key>
-      <value>analog_nbfm_rx_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>audio_rate</key>
-      <value>audio_rate</value>
-    </param>
-    <param>
-      <key>quad_rate</key>
-      <value>audio_rate</value>
-    </param>
-    <param>
-      <key>tau</key>
-      <value>0.000000000000000000001</value>
-    </param>
-    <param>
-      <key>max_dev</key>
-      <value>dstar_bandwidth</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(184, 256)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_multiply_const_vxx</key>
-    <param>
-      <key>id</key>
-      <value>blocks_multiply_const_vxx_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>const</key>
-      <value>0-in_final_gain if in_audio_inverted else in_final_gain</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(296, 341)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>analog_fm_demod_cf</key>
-    <param>
-      <key>id</key>
-      <value>analog_fm_demod_cf_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>chan_rate</key>
-      <value>audio_rate*in_decimation_factor</value>
-    </param>
-    <param>
-      <key>audio_decim</key>
-      <value>in_decimation_factor</value>
-    </param>
-    <param>
-      <key>deviation</key>
-      <value>dstar_bandwidth*2</value>
-    </param>
-    <param>
-      <key>audio_pass</key>
-      <value>dstar_bandwidth</value>
-    </param>
-    <param>
-      <key>audio_stop</key>
-      <value>dstar_bandwidth+1e3</value>
-    </param>
-    <param>
-      <key>gain</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>tau</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(72, 312)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>analog_pwr_squelch_xx</key>
     <param>
       <key>id</key>
@@ -4132,7 +3904,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 253)</value>
+      <value>(936, 253)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4140,14 +3912,144 @@
     </param>
   </block>
   <block>
-    <key>blocks_complex_to_real</key>
+    <key>analog_fm_demod_cf</key>
     <param>
       <key>id</key>
-      <value>blocks_complex_to_real_0</value>
+      <value>analog_fm_demod_cf_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>chan_rate</key>
+      <value>audio_rate*in_decimation_factor</value>
+    </param>
+    <param>
+      <key>audio_decim</key>
+      <value>in_decimation_factor</value>
+    </param>
+    <param>
+      <key>deviation</key>
+      <value>dstar_bandwidth*2</value>
+    </param>
+    <param>
+      <key>audio_pass</key>
+      <value>dstar_bandwidth</value>
+    </param>
+    <param>
+      <key>audio_stop</key>
+      <value>dstar_bandwidth+1e3</value>
+    </param>
+    <param>
+      <key>gain</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>tau</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(72, 312)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>analog_nbfm_rx</key>
+    <param>
+      <key>id</key>
+      <value>analog_nbfm_rx_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
+    </param>
+    <param>
+      <key>audio_rate</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>quad_rate</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>tau</key>
+      <value>0.000000000000000000001</value>
+    </param>
+    <param>
+      <key>max_dev</key>
+      <value>dstar_bandwidth</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(184, 256)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_multiply_const_vxx</key>
+    <param>
+      <key>id</key>
+      <value>blocks_multiply_const_vxx_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>const</key>
+      <value>0-in_final_gain if in_audio_inverted else in_final_gain</value>
     </param>
     <param>
       <key>vlen</key>
@@ -4175,7 +4077,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 213)</value>
+      <value>(296, 341)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4198,7 +4100,7 @@
     </param>
     <param>
       <key>device_name</key>
-      <value>plughw:11,0</value>
+      <value>plughw:1,0</value>
     </param>
     <param>
       <key>ok_to_block</key>
@@ -4223,6 +4125,61 @@
     <param>
       <key>_coordinate</key>
       <value>(504, 299)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>audio_source</key>
+    <param>
+      <key>id</key>
+      <value>audio_source_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>audio_rate</value>
+    </param>
+    <param>
+      <key>device_name</key>
+      <value>plughw:1,0</value>
+    </param>
+    <param>
+      <key>ok_to_block</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>num_outputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(832, 123)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4332,6 +4289,12 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>analog_pwr_squelch_xx_1</source_block_id>
+    <sink_block_id>analog_nbfm_rx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
     <sink_block_id>audio_sink_1</sink_block_id>
     <source_key>0</source_key>
@@ -4344,18 +4307,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
-    <sink_block_id>blocks_wavfile_sink_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>analog_pwr_squelch_xx_1</source_block_id>
-    <sink_block_id>analog_nbfm_rx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>analog_nbfm_rx_0</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
     <source_key>0</source_key>
@@ -4364,24 +4315,6 @@
   <connection>
     <source_block_id>analog_fm_demod_cf_0</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>analog_pwr_squelch_xx_1</source_block_id>
-    <sink_block_id>blocks_complex_to_real_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_complex_to_real_0</source_block_id>
-    <sink_block_id>blocks_wavfile_sink_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_complex_to_real_0</source_block_id>
-    <sink_block_id>audio_sink_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
