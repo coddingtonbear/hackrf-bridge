@@ -6,8 +6,8 @@ Have a HackRF and an RTLSDR and want to set up your own local D-Star HotSpot? Us
 
 Resources:
 
-* If you're attempting this on Linux rather than OSX; you'll need to use alsa-aloop.  See the `linux_aloop` branch for my working version.
 * [OpenDV on Github](https://github.com/dl5di/OpenDV)
 * [PcRepeaterController Group on Yahoo](https://groups.yahoo.com/neo/groups/pcrepeatercontroller/info)
 * [IrcDDBGateway Group on Yahoo](https://groups.yahoo.com/neo/groups/ircDDBGateway/info)
+* If you're attempting this on OSX rather than Linux; check out an earlier version of this script in the `osx_version` branch.
 
